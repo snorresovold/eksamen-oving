@@ -9,8 +9,8 @@ export interface Question {
 
 export interface Quiz {
 	title: string;
-	questions: Question[];
 	desc: string;
+	questions: Question[];
 }
 
 export default function Home() {
