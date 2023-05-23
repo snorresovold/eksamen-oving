@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	cors "github.com/rs/cors/wrapper/gin"
 
 	"github.com/gin-gonic/gin"
 )
@@ -107,6 +108,7 @@ var Quiz = quiz{
 
 func main() {
 	r := gin.Default()
+	r.Use(cors.Default())
 	r.GET("/", getQuiz)
 	r.Run("localhost:8080")
 }

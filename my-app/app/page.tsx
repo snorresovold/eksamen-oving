@@ -1,28 +1,43 @@
-import Image from 'next/image'
-import axios from 'axios';
+"use client";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export interface Question {
-	question: string;
-	answers: string[];
-	correctIndex: number;
+  Question: string;
+  Answers: string[];
+  CorrectIndex: number;
 }
 
 export interface Quiz {
-	title: string;
-	desc: string;
-	questions: Question[];
+  Title: string;
+  Desc: string;
+  Questions: Question[];
 }
 
 export default function Home() {
-  axios.get('http://localhost:8080/')
-  .then(response => {
-    console.log(response.data);
-  }, error => {
-    console.log(error);
-  });
+  const [quiz, setQuiz] = useState<Quiz>();
+  function fetchData() {
+    axios.get("http://localhost:8080/").then(
+      (response) => {
+        console.log(response.data);
+        setQuiz(response.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  useEffect(() => {
+    fetchData();
+    console.log(quiz);
+  }, []);
+
   return (
     <div>
-      <h1>lol</h1>
+      {quiz?.Title}
+      <br />
+      {quiz?.Desc}
     </div>
-  )
+  );
 }
