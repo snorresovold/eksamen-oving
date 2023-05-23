@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import axios from 'axios';
 
-
 export interface Question {
 	question: string;
 	answers: string[];
@@ -13,7 +12,6 @@ export interface Quiz {
 	questions: Question[];
 	desc: string;
 }
-
 
 export default function Home() {
   axios.get('http://localhost:8080/')
