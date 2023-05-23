@@ -8,8 +8,8 @@ import (
 
 type quiz struct {
 	Title     string
-	Questions []question
 	Desc      string
+	Questions []question
 }
 
 type question struct {
